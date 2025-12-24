@@ -21,9 +21,9 @@ Scope {
             implicitWidth: Theme.ui.leftBarWidth
 
             margins {
-                left: Theme.ui.padding.small
-                top: Theme.ui.padding.small
-                bottom: Theme.ui.padding.small
+                left: Theme.ui.padding.sm
+                top: Theme.ui.padding.sm
+                bottom: Theme.ui.padding.sm
             }
 
             WlrLayershell.layer: WlrLayer.Top
@@ -42,15 +42,15 @@ Scope {
 
                 ColumnLayout {
                     anchors.fill: parent
-                    spacing: Theme.ui.padding.small
+                    spacing: Theme.ui.padding.sm
                     ClockCard {
-                        Layout.margins: Theme.ui.padding.small
+                        Layout.margins: Theme.ui.padding.sm
                         Layout.fillWidth: true
                         // Layout.alignment: Qt.AlignTop
                         Layout.preferredHeight: 115
                     }
                     PowerDispCard {
-                        Layout.margins: Theme.ui.padding.small
+                        Layout.margins: Theme.ui.padding.sm
                         Layout.fillWidth: true
                         Layout.preferredWidth: parent.width
                         // Layout.alignment: Qt.AlignTop

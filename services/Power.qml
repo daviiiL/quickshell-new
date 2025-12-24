@@ -10,7 +10,7 @@ Singleton {
     readonly property real percentage: UPower.displayDevice.percentage
     readonly property real timeToGoal: UPower.displayDevice.timeToEmpty || UPower.displayDevice.timeToFull
     readonly property bool isLaptopBattery: UPower.displayDevice.isLaptopBattery || false
-    readonly property bool state: UPower.displayDevice.state
+    readonly property int state: UPower.displayDevice.state
     readonly property bool isCharging: state === UPowerDeviceState.Charging
     readonly property string currentProfile: PowerProfile.toString(PowerProfiles.profile)
 

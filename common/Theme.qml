@@ -24,10 +24,11 @@ Singleton {
     }
 
     component AnimDurations: QtObject {
-        readonly property int small: 200
-        readonly property int normal: 400
-        readonly property int large: 600
-        readonly property int extraLarge: 1000
+        readonly property int xs: 200
+        readonly property int sm: 400
+        readonly property int md: 600
+        readonly property int lg: 1000
+        readonly property int xl: 1500
         readonly property int expressiveFastSpatial: 350
         readonly property int expressiveDefaultSpatial: 500
         readonly property int expressiveEffects: 200
@@ -71,9 +72,9 @@ Singleton {
     }
 
     component ThemePadding: QtObject {
-        readonly property int small: 8
-        readonly property int standard: 16
-        readonly property int large: 24
+        readonly property int sm: 8
+        readonly property int md: 16
+        readonly property int lg: 24
     }
 
     component FontFamily: QtObject {

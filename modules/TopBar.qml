@@ -26,9 +26,9 @@ Scope {
             }
 
             margins {
-                left: Theme.ui.padding.small
-                right: Theme.ui.padding.small
-                top: Theme.ui.padding.small
+                left: Theme.ui.padding.sm
+                right: Theme.ui.padding.sm
+                top: Theme.ui.padding.sm
             }
 
             Rectangle {
