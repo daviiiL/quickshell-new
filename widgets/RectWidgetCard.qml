@@ -20,14 +20,14 @@ Rectangle {
             visible: root.showTitle
             Layout.fillWidth: true
             Layout.preferredHeight: 30
-            color: Colors.surface_container
+            color: Colors.secondary_container
             topRightRadius: Theme.ui.radius.md
             topLeftRadius: Theme.ui.radius.md
 
             Text {
                 anchors.centerIn: parent
                 text: root.title
-                color: Qt.lighter(parent.color, 5)
+                color: Colors.on_secondary_container
                 font.family: Theme.font.family.inter_thin
                 font.pixelSize: Theme.font.size.md
             }
