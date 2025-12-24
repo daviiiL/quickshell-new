@@ -7,6 +7,7 @@ import qs.services
 RectWidgetCard {
     showTitle: true
     title: "Battery"
+    visible: Power.isLaptopBattery
 
     ColumnLayout {
         spacing: 5

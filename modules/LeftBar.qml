@@ -54,6 +54,12 @@ Scope {
                         Layout.fillWidth: true
                     }
 
+                    SysIndicatorsCard {
+                        Layout.leftMargin: Theme.ui.padding.sm
+                        Layout.rightMargin: Theme.ui.padding.sm
+                        Layout.fillWidth: true
+                    }
+
                     Item {
                         Layout.fillHeight: true
                     }
