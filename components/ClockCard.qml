@@ -9,6 +9,7 @@ RectWidgetCard {
     Rectangle {
         width: parent.width
         height: hh.height + mm.height + dd.height + 5
+        implicitHeight: height
         color: "transparent"
 
         Text {

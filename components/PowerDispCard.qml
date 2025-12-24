@@ -10,7 +10,7 @@ RectWidgetCard {
 
     ColumnLayout {
         spacing: 5
-        anchors.fill: parent
+        width: parent.width
 
         Text {
             text: `BAT ${Math.floor(Power.percentage * 100)}%`

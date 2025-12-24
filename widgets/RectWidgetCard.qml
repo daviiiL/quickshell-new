@@ -13,10 +13,15 @@ Rectangle {
 
     default property alias content: contentRect.data
 
+    // Calculate implicit height: title height (if shown) + content height
+    implicitHeight: (showTitle ? 30 : 0) + contentRect.implicitHeight
+
     ColumnLayout {
         anchors.fill: parent
         spacing: 0
+
         Rectangle {
+            id: titleRect
             visible: root.showTitle
             Layout.fillWidth: true
             Layout.preferredHeight: 30
@@ -36,7 +41,8 @@ Rectangle {
         Rectangle {
             id: contentRect
             Layout.fillWidth: true
-            Layout.fillHeight: true
+            implicitHeight: childrenRect.height
+            Layout.preferredHeight: implicitHeight
             bottomLeftRadius: Theme.ui.radius.md
             bottomRightRadius: Theme.ui.radius.md
             topLeftRadius: root.showTitle ? 0 : Theme.ui.radius.md

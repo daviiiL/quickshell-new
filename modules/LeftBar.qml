@@ -42,19 +42,16 @@ Scope {
 
                 ColumnLayout {
                     anchors.fill: parent
-                    spacing: Theme.ui.padding.sm
+                    spacing: 3
                     ClockCard {
-                        Layout.margins: Theme.ui.padding.sm
+                        Layout.leftMargin: Theme.ui.padding.sm
+                        Layout.rightMargin: Theme.ui.padding.sm
                         Layout.fillWidth: true
-                        // Layout.alignment: Qt.AlignTop
-                        Layout.preferredHeight: 115
                     }
                     PowerDispCard {
-                        Layout.margins: Theme.ui.padding.sm
+                        Layout.leftMargin: Theme.ui.padding.sm
+                        Layout.rightMargin: Theme.ui.padding.sm
                         Layout.fillWidth: true
-                        Layout.preferredWidth: parent.width
-                        // Layout.alignment: Qt.AlignTop
-                        Layout.preferredHeight: 140
                     }
 
                     Item {
