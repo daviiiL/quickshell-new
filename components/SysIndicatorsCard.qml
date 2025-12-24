@@ -24,6 +24,12 @@ RectWidgetCard {
         SysIndicatorButton {
             Layout.alignment: Qt.AlignHCenter
             Layout.bottomMargin: 10
+
+            buttonIcon: Power.powerProfileIcon
+            buttonText: Power.powerProfileText
+
+            checked: Power.currentProfile === "Performance"
+            onClicked: !checked ? Power.setPowerProfile("PowerSaver") : Power.setPowerProfile("Performance")
         }
     }
 }

@@ -7,25 +7,42 @@ import Quickshell.Services.UPower
 Singleton {
     id: root
 
-    readonly property real percentage: UPower.displayDevice.percentage
-    readonly property real timeToGoal: UPower.displayDevice.timeToEmpty || UPower.displayDevice.timeToFull
+    // Battery status properties
+    readonly property bool onBattery: UPower.onBattery
     readonly property bool isLaptopBattery: UPower.displayDevice.isLaptopBattery || false
+    readonly property real percentage: UPower.displayDevice.percentage
     readonly property int state: UPower.displayDevice.state
     readonly property bool isCharging: state === UPowerDeviceState.Charging
-    readonly property string currentProfile: PowerProfile.toString(PowerProfiles.profile)
-
-    readonly property bool onBattery: UPower.onBattery
-
-    readonly property string powerProfileIconText: {
-        if (PowerProfiles.profile === PowerProfile.PowerSaver)
-            return "energy_savings_leaf";
-        if (PowerProfiles.profile === PowerProfile.Performance)
-            return "rocket_launch";
-        return "balance";
+    readonly property real timeToGoal: {
+        return UPower.displayDevice.timeToEmpty !== 0 ? UPower.displayDevice.timeToEmpty : UPower.displayDevice.timeToFull;
     }
 
+    // Power profile properties
+    readonly property string currentProfile: PowerProfile.toString(PowerProfiles.profile)
+    readonly property string powerProfileIcon: {
+        switch (PowerProfiles.profile) {
+        case PowerProfile.PowerSaver:
+            return "energy_savings_leaf";
+        case PowerProfile.Performance:
+            return "speed";
+        case PowerProfile.Balanced:
+        default:
+            return "donut_large";
+        }
+    }
+    readonly property string powerProfileText: {
+        switch (PowerProfiles.profile) {
+        case PowerProfile.PowerSaver:
+            return "Energy";
+        case PowerProfile.Performance:
+            return "Boost";
+        case PowerProfile.Balanced:
+        default:
+            return "Balanced";
+        }
+    }
+    // Power profile control
     function setPowerProfile(profileName: string) {
-        var profile;
         switch (profileName) {
         case "Performance":
             PowerProfiles.profile = PowerProfile.Performance;
@@ -33,11 +50,10 @@ Singleton {
         case "PowerSaver":
             PowerProfiles.profile = PowerProfile.PowerSaver;
             break;
+        case "Balanced":
         default:
             PowerProfiles.profile = PowerProfile.Balanced;
             break;
         }
-
-        return;
     }
 }

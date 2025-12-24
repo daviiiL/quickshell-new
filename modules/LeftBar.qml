@@ -41,8 +41,12 @@ Scope {
                 radius: Theme.ui.radius.md
 
                 ColumnLayout {
+                    anchors {
+                        topMargin: 5
+                        bottomMargin: 5
+                    }
                     anchors.fill: parent
-                    spacing: 3
+                    spacing: 5
                     ClockCard {
                         Layout.leftMargin: Theme.ui.padding.sm
                         Layout.rightMargin: Theme.ui.padding.sm
