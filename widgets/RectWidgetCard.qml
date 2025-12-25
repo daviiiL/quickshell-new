@@ -31,6 +31,8 @@ Rectangle {
             topRightRadius: Theme.ui.radius.md
             topLeftRadius: Theme.ui.radius.md
 
+            Layout.alignment: Qt.AlignTop
+
             Text {
                 anchors.centerIn: parent
                 text: root.title

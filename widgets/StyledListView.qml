@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.Controls
 import qs.common
 
 ListView {
@@ -16,11 +15,9 @@ ListView {
     spacing: 5
     clip: true
 
-    // Smooth scrolling
     maximumFlickVelocity: 4000
     flickDeceleration: 1500
 
-    // Add transition
     add: Transition {
         id: addTransition
 
@@ -86,7 +83,6 @@ ListView {
         }
     }
 
-    // Displaced (when items are moved around due to add/remove)
     displaced: Transition {
         NumberAnimation {
             properties: "x,y"
@@ -96,37 +92,12 @@ ListView {
         }
     }
 
-    // Move transition
     move: Transition {
         NumberAnimation {
             properties: "x,y"
             duration: Theme.anim.durations.sm
             easing.type: Easing.BezierSpline
             easing.bezierCurve: Theme.anim.curves.emphasized
-        }
-    }
-
-    // Scroll bar
-    ScrollBar.vertical: ScrollBar {
-        id: scrollBar
-
-        policy: ScrollBar.AsNeeded
-
-        contentItem: Rectangle {
-            implicitWidth: 6
-            implicitHeight: 100
-            radius: 3
-            color: Qt.rgba(Colors.on_surface.r, Colors.on_surface.g, Colors.on_surface.b, 0.3)
-
-            Behavior on opacity {
-                NumberAnimation {
-                    duration: Theme.anim.durations.xs
-                }
-            }
-        }
-
-        background: Rectangle {
-            color: "transparent"
         }
     }
 }

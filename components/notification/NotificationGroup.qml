@@ -1,4 +1,6 @@
+pragma ComponentBehavior: Bound
 import QtQuick
+
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Services.Notifications
@@ -155,9 +157,13 @@ MouseArea {
 
                 Layout.alignment: Qt.AlignTop
                 Layout.fillWidth: false
-                image: root?.multipleNotifications ? "" : notificationGroup?.notifications[0]?.image ?? ""
-                appIcon: notificationGroup?.appIcon
-                summary: notificationGroup?.notifications[root.notificationCount - 1]?.summary
+                Layout.preferredWidth: implicitWidth
+                Layout.preferredHeight: implicitHeight
+                Layout.maximumWidth: implicitWidth
+                Layout.maximumHeight: implicitHeight
+                image: root?.multipleNotifications ? "" : root.notificationGroup?.notifications[0]?.image ?? ""
+                appIcon: root.notificationGroup?.appIcon
+                summary: root.notificationGroup?.notifications[root.notificationCount - 1]?.summary
                 urgency: root.notifications.some(n => n.urgency === NotificationUrgency.Critical.toString()) ? NotificationUrgency.Critical : NotificationUrgency.Normal
 
                 Behavior on y {
@@ -200,7 +206,7 @@ MouseArea {
                             id: appName
                             elide: Text.ElideRight
                             Layout.fillWidth: true
-                            text: (topRow.showAppName ? notificationGroup?.appName : notificationGroup?.notifications[0]?.summary) || ""
+                            text: (topRow.showAppName ? root.notificationGroup?.appName : root.notificationGroup?.notifications[0]?.summary) || ""
                             font.pixelSize: topRow.showAppName ? topRow.fontSize : Theme.font.size.md + 3
                             color: Colors.on_primary_container
                         }
@@ -209,7 +215,7 @@ MouseArea {
                             id: timeText
                             Layout.rightMargin: 10
                             horizontalAlignment: Text.AlignLeft
-                            text: NotificationUtils.getFriendlyNotifTimeString(notificationGroup?.time)
+                            text: NotificationUtils.getFriendlyNotifTimeString(root.notificationGroup?.time)
                             font.pixelSize: topRow.fontSize
                             color: Colors.on_primary_container
                             opacity: 0.7

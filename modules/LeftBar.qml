@@ -69,7 +69,11 @@ Scope {
                         Layout.alignment: Qt.AlignHCenter
                     }
 
-                    Item {
+                    SystemTrayCard {
+                        Layout.leftMargin: Theme.ui.padding.sm
+                        Layout.rightMargin: Theme.ui.padding.sm
+                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                         Layout.fillHeight: true
                     }
                 }

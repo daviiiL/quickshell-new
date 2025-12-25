@@ -21,7 +21,7 @@ MaterialCookie {
 
     implicitWidth: baseSize
     implicitHeight: baseSize
-    sides: isUrgent ? 10 : 0
+
     amplitude: baseSize / 24
 
     color: isUrgent ? Colors.error : "transparent"

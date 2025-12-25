@@ -6,8 +6,7 @@ Item {
     id: root
 
     property color color: Colors.primary_container
-    property int sides: 6
-    property real irregularity: 0.15
+    property real irregularity: 0.08
     property real amplitude: 1.0
     property bool animate: true
 
@@ -32,8 +31,8 @@ Item {
             PathAngleArc {
                 centerX: root.width / 2
                 centerY: root.height / 2
-                radiusX: root.width / 2 * (1 - root.irregularity + root.irregularity * (1 + Math.sin(shapePath.animPhase)))
-                radiusY: root.height / 2 * (1 - root.irregularity + root.irregularity * (1 + Math.cos(shapePath.animPhase)))
+                radiusX: root.width / 2 * (1 - root.amplitude * root.irregularity + root.amplitude * root.irregularity * Math.sin(shapePath.animPhase))
+                radiusY: root.height / 2 * (1 - root.amplitude * root.irregularity + root.amplitude * root.irregularity * Math.cos(shapePath.animPhase))
                 startAngle: 0
                 sweepAngle: 360
             }
