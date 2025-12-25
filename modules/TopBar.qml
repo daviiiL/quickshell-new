@@ -1,7 +1,9 @@
 import QtQuick
+import QtQuick.Layouts
 import Quickshell
 import Quickshell.Wayland
 import qs.common
+import qs.components
 
 Scope {
     Variants {
@@ -32,6 +34,16 @@ Scope {
                 anchors.margins: Theme.ui.padding.sm / 2
 
                 color: Colors.surface_light_translucent
+
+                RowLayout {
+                    anchors.fill: parent
+                    spacing: Theme.ui.padding.md
+
+                    Workspaces {
+                        Layout.fillHeight: true
+                        Layout.leftMargin: Theme.ui.padding.sm
+                    }
+                }
             }
         }
     }

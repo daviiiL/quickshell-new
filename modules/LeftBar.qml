@@ -49,6 +49,23 @@ Scope {
                     }
                     anchors.fill: parent
                     spacing: 5
+                    RowLayout {
+                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
+                        Text {
+                            text: "Sys"
+                            color: Colors.secondary_container
+                            font {
+                                family: Theme.font.family.inter_bold
+                            }
+                        }
+                        Text {
+                            text: "v1"
+                            color: Colors.secondary_container
+                            font {}
+                        }
+                    }
+
                     ClockCard {
                         Layout.leftMargin: Theme.ui.padding.sm
                         Layout.rightMargin: Theme.ui.padding.sm
@@ -68,13 +85,12 @@ Scope {
                         Layout.fillWidth: true
                         Layout.alignment: Qt.AlignHCenter
                     }
-
                     SystemTrayCard {
                         Layout.leftMargin: Theme.ui.padding.sm
                         Layout.rightMargin: Theme.ui.padding.sm
                         Layout.fillWidth: true
-                        Layout.alignment: Qt.AlignHCenter
                         Layout.fillHeight: true
+                        Layout.alignment: Qt.AlignHCenter
                     }
                 }
             }
