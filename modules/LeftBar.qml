@@ -16,7 +16,7 @@ Scope {
             required property var modelData
 
             screen: modelData
-            color: "transparent"
+            color: Colors.surface_light_translucent
 
             implicitWidth: Theme.ui.leftBarWidth
 

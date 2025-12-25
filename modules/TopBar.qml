@@ -29,6 +29,8 @@ Scope {
                 top: true
             }
 
+            margins.left: 5
+
             Rectangle {
                 anchors.fill: parent
                 radius: Theme.ui.radius.md
