@@ -37,8 +37,10 @@ Scope {
 
             Rectangle {
                 anchors.fill: parent
-                color: Qt.rgba(Colors.surface.r, Colors.surface.g, Colors.surface.b, 0.8)
+                color: Colors.surface_light_translucent
                 radius: Theme.ui.radius.md
+
+                // WlrLayershell.namespace: "bar"
 
                 ColumnLayout {
                     anchors {
@@ -58,7 +60,7 @@ Scope {
                         Layout.fillWidth: true
                     }
 
-                    SysIndicatorsCard {
+                    SystemButtonsCard {
                         Layout.leftMargin: Theme.ui.padding.sm
                         Layout.rightMargin: Theme.ui.padding.sm
                         Layout.fillWidth: true

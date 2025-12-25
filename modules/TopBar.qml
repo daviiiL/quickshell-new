@@ -34,7 +34,8 @@ Scope {
             Rectangle {
                 anchors.fill: parent
                 radius: Theme.ui.radius.md
-                color: Qt.rgba(Colors.surface.r, Colors.surface.g, Colors.surface.b, 0.8)
+
+                color: Colors.surface_light_translucent
             }
         }
     }

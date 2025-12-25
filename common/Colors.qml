@@ -60,6 +60,9 @@ Singleton {
     readonly property color tertiary_fixed: current.tertiary_fixed
     readonly property color tertiary_fixed_dim: current.tertiary_fixed_dim
 
+    readonly property color surface_light: Qt.lighter(root.surface, 3)
+    readonly property color surface_light_translucent: Qt.rgba(surface_light.r, surface_light.g, surface_light.b, 0.9)
+
     function load(data: string): void {
         const obj = JSON.parse(data);
 
