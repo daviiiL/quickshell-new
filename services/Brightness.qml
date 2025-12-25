@@ -52,11 +52,23 @@ Singleton {
                     root._backlightPath = "/sys/class/backlight/" + device;
                     root._brightnessPath = root._backlightPath + "/brightness";
                     root._maxBrightnessPath = root._backlightPath + "/max_brightness";
-                    console.debug("Backlight device:", device);
-                    console.debug("Brightness path:", root._brightnessPath);
-                    console.debug("Max brightness path:", root._maxBrightnessPath);
+                    // console.debug("Backlight device:", device);
+                    // console.debug("Brightness path:", root._brightnessPath);
+                    // console.debug("Max brightness path:", root._maxBrightnessPath);
+
+                    checkPathsProc.running = true;
                 }
             }
+        }
+    }
+
+    Process {
+        id: checkPathsProc
+
+        command: ["sh", "-c", "test -f '" + root._brightnessPath + "' && test -f '" + root._maxBrightnessPath + "' && echo 'Paths exist' || echo 'Paths missing'"]
+
+        stdout: StdioCollector {
+            onStreamFinished: {}
         }
     }
 
@@ -71,10 +83,12 @@ Singleton {
         blockLoading: !available || _maxBrightnessPath === ""
         blockWrites: true
 
-        onPathChanged: console.debug("Max brightness FileView path:", path)
+        onPathChanged: {
+            // console.debug("Max brightness FileView path:", path)
+        }
 
         onLoaded: {
-            console.debug("Max brightness loaded:", this.text());
+            // console.debug("Max brightness loaded:", this.text());
             root._max = parseInt(this.text());
             root._updateBrightness();
         }
@@ -88,23 +102,26 @@ Singleton {
         blockWrites: true
         watchChanges: true
 
-        onPathChanged: console.debug("Current brightness FileView path:", path)
+        onPathChanged: {
+            // console.debug("Current brightness FileView path:", path)
+        }
 
         onLoaded: {
-            console.debug("Current brightness loaded:", this.text());
+            // console.debug("Current brightness loaded:", this.text());
             root._current = parseInt(this.text());
             root._updateBrightness();
         }
 
         onFileChanged: {
-            console.debug("Brightness file changed");
+            // console.debug("Brightness file changed");
             this.reload();
         }
     }
 
     function _updateBrightness() {
         if (_max > 0) {
-            root._brightness = (_current / _max) * 100;
+            const newBrightness = (_current / _max) * 100;
+            root._brightness = newBrightness;
         }
     }
 

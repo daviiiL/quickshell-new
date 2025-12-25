@@ -35,7 +35,7 @@ Scope {
 
                 anchors.margins: Theme.ui.padding.sm / 2
 
-                color: Colors.surface_light_translucent
+                color: Qt.rgba(Colors.background.r, Colors.background.g, Colors.background.b, 0.9)
 
                 RowLayout {
                     anchors.fill: parent
@@ -114,6 +114,12 @@ Scope {
                                 hideTopProgressBar.restart();
                             }
                         }
+                    }
+
+                    SystemStatusCard {
+                        Layout.fillHeight: true
+                        Layout.rightMargin: Theme.ui.padding.sm
+                        Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                     }
                 }
             }

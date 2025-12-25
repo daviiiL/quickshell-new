@@ -40,7 +40,6 @@ ListView {
         }
     }
 
-    // Remove transition
     remove: Transition {
         id: removeTransition
 

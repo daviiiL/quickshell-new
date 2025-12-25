@@ -113,51 +113,5 @@ Item {
                 smooth: true
             }
         }
-        //
-        // Canvas {
-        //     id: canvas
-        //     anchors.fill: parent
-        //
-        //     property color markerColor: Colors.primary
-        //     property real dpr: Screen.devicePixelRatio
-        //
-        //     width: parent.width
-        //     height: parent.height
-        //     canvasSize.width: width * dpr
-        //     canvasSize.height: height * dpr
-        //
-        //     antialiasing: true
-        //     smooth: true
-        //
-        //     onPaint: {
-        //         var ctx = getContext("2d");
-        //         ctx.save();
-        //
-        //         // Scale for high DPI
-        //         ctx.scale(dpr, dpr);
-        //         ctx.clearRect(0, 0, width, height);
-        //
-        //         // Set line style
-        //         ctx.strokeStyle = markerColor;
-        //         ctx.globalAlpha = 0.5;
-        //         ctx.lineWidth = 1;
-        //
-        //         var markers = [0.25, 0.50, 0.75];
-        //         for (var i = 0; i < markers.length; i++) {
-        //             var x = width * markers[i];
-        //             ctx.beginPath();
-        //             ctx.moveTo(x, 0);
-        //             ctx.lineTo(x, height);
-        //             ctx.stroke();
-        //         }
-        //
-        //         ctx.restore();
-        //     }
-        //
-        //     // Repaint when size or DPI changes
-        //     onWidthChanged: requestPaint()
-        //     onHeightChanged: requestPaint()
-        //     onDprChanged: requestPaint()
-        // }
     }
 }

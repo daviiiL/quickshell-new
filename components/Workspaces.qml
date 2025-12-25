@@ -29,25 +29,6 @@ Item {
 
     function convertToRomanNumerals(val) {
         return val;
-    // let res = "";
-    // while (val >= 10) {
-    //     res += "X";
-    //     val -= 10;
-    // }
-    //
-    // if (val == 9) {
-    //     res += "IX";
-    // } else {
-    //     if (val >= 5) {
-    //         res += "V";
-    //         val -= 5;
-    //     }
-    //     while (val > 0) {
-    //         res += "I";
-    //         val -= 1;
-    //     }
-    // }
-    // return res;
     }
 
     Component.onCompleted: updateWorkspaceOccupied()
@@ -77,7 +58,6 @@ Item {
         acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
     }
 
-    // Background indicator for occupied workspaces
     Row {
         z: 1
         anchors.centerIn: root
@@ -134,7 +114,6 @@ Item {
         }
     }
 
-    // Current workspace indicator rectangle (overlays on the dots)
     Rectangle {
         z: 2
         radius: Theme.ui.radius.md
@@ -173,7 +152,6 @@ Item {
         }
     }
 
-    // Clickable buttons container
     Row {
         id: workspaceButtons
         z: 3
@@ -183,7 +161,6 @@ Item {
         Repeater {
             model: root.workspacesShown
 
-            // Individual clickable button for each workspace
             MouseArea {
                 id: button
                 property int workspaceValue: workspaceGroup * root.workspacesShown + index + 1
@@ -192,7 +169,6 @@ Item {
 
                 onClicked: Hyprland.dispatch(`workspace ${workspaceValue}`)
 
-                // Workspace number indicator
                 Item {
                     anchors.centerIn: parent
                     implicitHeight: 20
@@ -202,7 +178,6 @@ Item {
                         text: button.workspaceValue
                         anchors.centerIn: parent
 
-                        // Intermediate properties for animation
                         property real animatedPixelSize: (monitor?.activeWorkspace?.id == button.workspaceValue) ? Theme.font.size.lg : Theme.font.size.md
                         property int animatedWeight: (monitor?.activeWorkspace?.id == button.workspaceValue) ? Font.Bold : Font.Medium
 

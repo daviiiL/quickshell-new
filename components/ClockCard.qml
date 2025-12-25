@@ -5,7 +5,7 @@ import qs.widgets
 
 RectWidgetCard {
     showTitle: true
-    title: "Time"
+    title: "Clock"
     Rectangle {
         width: parent.width
         height: hh.height + mm.height + dd.height + 5

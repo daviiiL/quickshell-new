@@ -36,7 +36,6 @@ Singleton {
     property int networkStrength
     property string materialSymbol: root.ethernet ? "lan" : root.wifiEnabled ? (Network.networkStrength > 83 ? "signal_wifi_4_bar" : Network.networkStrength > 67 ? "network_wifi" : Network.networkStrength > 50 ? "network_wifi_3_bar" : Network.networkStrength > 33 ? "network_wifi_2_bar" : Network.networkStrength > 17 ? "network_wifi_1_bar" : "signal_wifi_0_bar") : (root.wifiStatus === "connecting") ? "signal_wifi_statusbar_not_connected" : (root.wifiStatus === "disconnected") ? "wifi_find" : (root.wifiStatus === "disabled") ? "signal_wifi_off" : "signal_wifi_bad"
 
-    // Control
     function enableWifi(enabled = true): void {
         const cmd = enabled ? "on" : "off";
         enableWifiProc.exec(["nmcli", "radio", "wifi", cmd]);
@@ -90,13 +89,11 @@ Singleton {
             })
         stdout: SplitParser {
             onRead: line => {
-                // print(line)
                 getNetworks.running = true;
             }
         }
         stderr: SplitParser {
             onRead: line => {
-                // print("err:", line)
                 if (line.includes("Secrets were required")) {
                     root.wifiConnectTarget.askingPassword = true;
                 }
@@ -134,7 +131,6 @@ Singleton {
         }
     }
 
-    // Status update
     function update() {
         updateConnectionType.startCheck();
         wifiStatusProcess.running = true;

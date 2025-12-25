@@ -15,7 +15,6 @@ Rectangle {
 
     default property alias content: contentRect.data
 
-    // Calculate implicit height: title height (if shown) + content height
     implicitHeight: (showTitle ? 30 : 0) + contentRect.implicitHeight
 
     ColumnLayout {

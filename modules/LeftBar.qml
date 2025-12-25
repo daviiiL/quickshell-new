@@ -20,12 +20,6 @@ Scope {
 
             implicitWidth: Theme.ui.leftBarWidth
 
-            // margins {
-            //     left: Theme.ui.padding.sm
-            //     top: Theme.ui.padding.sm
-            //     bottom: Theme.ui.padding.sm
-            // }
-            //
             WlrLayershell.layer: WlrLayer.Top
             WlrLayershell.exclusiveZone: implicitWidth
 
@@ -51,17 +45,25 @@ Scope {
                     spacing: 5
                     RowLayout {
                         Layout.fillWidth: true
-                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredHeight: 15
+                        Layout.leftMargin: Theme.ui.padding.md
+                        Layout.rightMargin: Theme.ui.padding.md
+
                         Text {
-                            text: "Sys"
-                            color: Colors.secondary_container
+                            text: "SYS"
+                            color: Colors.secondary
                             font {
                                 family: Theme.font.family.inter_bold
                             }
                         }
+
+                        Item {
+                            Layout.fillWidth: true
+                        }
+
                         Text {
-                            text: "v1"
-                            color: Colors.secondary_container
+                            text: "V1"
+                            color: Colors.secondary
                             font {}
                         }
                     }
