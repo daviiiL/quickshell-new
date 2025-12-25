@@ -9,4 +9,6 @@ ShellRoot {
     LeftBar {}
     TopBar {}
     Lockscreen {}
+    NotificationPopup {}
+    NotificationCenterPanel {}
 }

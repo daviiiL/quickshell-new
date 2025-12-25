@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell.Bluetooth
 
+import qs.common
 import qs.widgets
 import qs.services
 
@@ -15,10 +16,14 @@ RectWidgetCard {
         SysIndicatorButton {
             Layout.alignment: Qt.AlignHCenter
             Layout.topMargin: 10
-            checked: false
+            checked: Notifications.unread > 0
 
-            buttonIcon: "notifications"
+            buttonIcon: Notifications.silent ? "notifications_paused" : "notifications"
             buttonText: "Notif"
+            onClicked: () => {
+                Notifications.markAllRead();
+                GlobalStates.notificationCenterOpen = !GlobalStates.notificationCenterOpen;
+            }
         }
         SysIndicatorButton {
             Layout.alignment: Qt.AlignHCenter
@@ -63,10 +68,10 @@ RectWidgetCard {
             onClicked: () => {
                 if (checked) {
                     Power.setPowerProfile("PowerSaver");
-                    checked: false;
+                    checked = false;
                 } else {
                     Power.setPowerProfile("Performance");
-                    checked: true;
+                    checked = true;
                 }
             }
         }

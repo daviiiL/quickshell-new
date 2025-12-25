@@ -8,4 +8,6 @@ Singleton {
     property bool screenLocked: false
     property bool screenUnlockFailed: false
     property bool screenLockContainsCharacters: false
+    property bool sidebarOpen: false
+    property bool notificationCenterOpen: false
 }
