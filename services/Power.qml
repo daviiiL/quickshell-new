@@ -7,7 +7,6 @@ import Quickshell.Services.UPower
 Singleton {
     id: root
 
-    // Battery status properties
     readonly property bool onBattery: UPower.onBattery
     readonly property bool isLaptopBattery: UPower.displayDevice.isLaptopBattery || false
     readonly property real percentage: UPower.displayDevice.percentage
@@ -17,8 +16,8 @@ Singleton {
         return UPower.displayDevice.timeToEmpty !== 0 ? UPower.displayDevice.timeToEmpty : UPower.displayDevice.timeToFull;
     }
 
-    // Power profile properties
     readonly property string currentProfile: PowerProfile.toString(PowerProfiles.profile)
+    readonly property bool isPerformanceMode: currentProfile === "Performance"
     readonly property string powerProfileIcon: {
         switch (PowerProfiles.profile) {
         case PowerProfile.PowerSaver:
@@ -41,7 +40,6 @@ Singleton {
             return "Balanced";
         }
     }
-    // Power profile control
     function setPowerProfile(profileName: string) {
         switch (profileName) {
         case "Performance":

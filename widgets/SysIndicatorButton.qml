@@ -5,7 +5,7 @@ import qs.widgets
 
 Rectangle {
     id: root
-    property bool checked: false
+    required property bool checked
     property string buttonIcon: "wifi"
     property string buttonText: "WiFi"
 
@@ -38,8 +38,6 @@ Rectangle {
             ctx.lineWidth = 3;
             ctx.lineCap = "round";
 
-            // Draw line at the top, centered horizontally
-            // Start at y=2 (half of lineWidth + 0.5) to prevent clipping
             const lineY = 2;
             const lineWidth = 20;
             const startX = (width - lineWidth) / 2;
@@ -83,7 +81,6 @@ Rectangle {
         onClicked: () => {
             if (root.onClicked)
                 root.onClicked();
-            root.checked = !root.checked;
         }
     }
 }

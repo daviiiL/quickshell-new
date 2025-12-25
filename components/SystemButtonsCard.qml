@@ -15,6 +15,10 @@ RectWidgetCard {
         SysIndicatorButton {
             Layout.alignment: Qt.AlignHCenter
             Layout.topMargin: 10
+            checked: false
+
+            buttonIcon: "notifications"
+            buttonText: "Notif"
         }
         SysIndicatorButton {
             Layout.alignment: Qt.AlignHCenter
@@ -54,13 +58,17 @@ RectWidgetCard {
             buttonIcon: Power.powerProfileIcon
             buttonText: Power.powerProfileText
 
+            checked: Power.isPerformanceMode || false
+
             onClicked: () => {
                 if (checked) {
                     Power.setPowerProfile("PowerSaver");
+                    checked: false;
                 } else {
                     Power.setPowerProfile("Performance");
+                    checked: true;
                 }
-              }
+            }
         }
-  } 
+    }
 }
