@@ -54,14 +54,13 @@ RectWidgetCard {
             buttonIcon: Power.powerProfileIcon
             buttonText: Power.powerProfileText
 
-            checked: Power.currentProfile === "Performance"
             onClicked: () => {
                 if (checked) {
                     Power.setPowerProfile("PowerSaver");
                 } else {
                     Power.setPowerProfile("Performance");
                 }
-            }
+              }
         }
-    }
+  } 
 }

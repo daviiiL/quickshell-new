@@ -20,12 +20,12 @@ Scope {
 
             implicitWidth: Theme.ui.leftBarWidth
 
-            margins {
-                left: Theme.ui.padding.sm
-                top: Theme.ui.padding.sm
-                bottom: Theme.ui.padding.sm
-            }
-
+            // margins {
+            //     left: Theme.ui.padding.sm
+            //     top: Theme.ui.padding.sm
+            //     bottom: Theme.ui.padding.sm
+            // }
+            //
             WlrLayershell.layer: WlrLayer.Top
             WlrLayershell.exclusiveZone: implicitWidth
 
@@ -40,12 +40,12 @@ Scope {
                 color: Colors.surface_light_translucent
                 radius: Theme.ui.radius.md
 
-                // WlrLayershell.namespace: "bar"
+                anchors.margins: Theme.ui.padding.sm / 2
 
                 ColumnLayout {
                     anchors {
-                        topMargin: 5
-                        bottomMargin: 5
+                        topMargin: Theme.ui.padding.sm
+                        bottomMargin: Theme.ui.padding.sm
                     }
                     anchors.fill: parent
                     spacing: 5
@@ -53,17 +53,20 @@ Scope {
                         Layout.leftMargin: Theme.ui.padding.sm
                         Layout.rightMargin: Theme.ui.padding.sm
                         Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                     }
-                    PowerDispCard {
+                    BatteryCard {
                         Layout.leftMargin: Theme.ui.padding.sm
                         Layout.rightMargin: Theme.ui.padding.sm
                         Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                     }
 
                     SystemButtonsCard {
                         Layout.leftMargin: Theme.ui.padding.sm
                         Layout.rightMargin: Theme.ui.padding.sm
                         Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                     }
 
                     Item {

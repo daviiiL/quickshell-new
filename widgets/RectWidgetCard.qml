@@ -5,7 +5,9 @@ import qs.common
 
 Rectangle {
     id: root
-    color: "transparent"
+    color: contentBackground
+
+    radius: Theme.ui.radius.md
 
     property bool showTitle: false
     property string title: ""
@@ -25,14 +27,14 @@ Rectangle {
             visible: root.showTitle
             Layout.fillWidth: true
             Layout.preferredHeight: 30
-            color: Colors.secondary_container
+            color: Colors.surface_light_translucent
             topRightRadius: Theme.ui.radius.md
             topLeftRadius: Theme.ui.radius.md
 
             Text {
                 anchors.centerIn: parent
                 text: root.title
-                color: Colors.on_secondary_container
+                color: Colors.on_surface
                 font.family: Theme.font.family.inter_thin
                 font.pixelSize: Theme.font.size.md
             }

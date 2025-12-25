@@ -7,7 +7,7 @@ import qs.services
 RectWidgetCard {
     showTitle: true
     title: "Battery"
-    visible: Power.isLaptopBattery
+    visible: Power.isLaptopBattery || false
 
     ColumnLayout {
         spacing: 5
@@ -48,7 +48,7 @@ RectWidgetCard {
                 return `${hh}:${mm}`;
             }
 
-            text: `EST ${formatTime(Power.timeToGoal)} ${Power.isCharging ? "till full" : "left"}`
+            text: Power.percentage > 0.99 ? "Fully charged" : `EST ${formatTime(Power.timeToGoal)} ${Power.isCharging ? "till full" : "left"}`
             font.family: Theme.font.family.inter_regular
             font.pixelSize: Theme.font.size.xs
             color: Colors.primary

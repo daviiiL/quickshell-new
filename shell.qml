@@ -8,4 +8,5 @@ import qs.modules
 ShellRoot {
     LeftBar {}
     TopBar {}
+    Lockscreen {}
 }

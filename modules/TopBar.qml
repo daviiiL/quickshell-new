@@ -25,15 +25,11 @@ Scope {
                 top: true
             }
 
-            margins {
-                left: Theme.ui.padding.sm
-                right: Theme.ui.padding.sm
-                top: Theme.ui.padding.sm
-            }
-
             Rectangle {
                 anchors.fill: parent
                 radius: Theme.ui.radius.md
+
+                anchors.margins: Theme.ui.padding.sm / 2
 
                 color: Colors.surface_light_translucent
             }
