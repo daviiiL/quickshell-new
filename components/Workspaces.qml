@@ -20,10 +20,14 @@ Item {
     implicitHeight: Theme.ui.topBarHeight
 
     function updateWorkspaceOccupied() {
+        const base = workspaceGroup * root.workspacesShown;
+        const toplevels = Hyprland.toplevels.values ?? [];
         workspaceOccupied = Array.from({
             length: root.workspacesShown
         }, (_, i) => {
-            return Hyprland.workspaces.values.some(ws => ws.id === workspaceGroup * root.workspacesShown + i + 1);
+            const targetId = base + i + 1;
+
+            return toplevels.some(tl => tl.workspace && tl.workspace.id === targetId);
         });
     }
 

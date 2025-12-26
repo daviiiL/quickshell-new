@@ -30,6 +30,48 @@ Scope {
             id: panel
             required property var modelData
 
+            property int focusedButtonIndex: 0
+
+            function setKeyActionFocusIndex(key) {
+                const i = focusedButtonIndex;
+
+                switch (key) {
+                case Qt.Key_Right:
+                    if ((i & 1) === 0)
+                        focusedButtonIndex = i + 1;
+                    break;
+                case Qt.Key_Left:
+                    if ((i & 1) === 1)
+                        focusedButtonIndex = i - 1;
+                    break;
+                case Qt.Key_Up:
+                    if (i >= 2)
+                        focusedButtonIndex = i - 2;
+                    break;
+                case Qt.Key_Down:
+                    if (i <= 1)
+                        focusedButtonIndex = i + 2;
+                    break;
+                }
+            }
+
+            function toggleButtonOnKeys() {
+                switch (focusedButtonIndex) {
+                case 0:
+                    lockButton.clicked();
+                    break;
+                case 1:
+                    logoutButton.clicked();
+                    break;
+                case 2:
+                    rebootButton.clicked();
+                    break;
+                case 3:
+                    shutdownButton.clicked();
+                    break;
+                }
+            }
+
             screen: modelData
             visible: GlobalStates.powerPanelOpen
 
@@ -56,34 +98,16 @@ Scope {
             }
             Rectangle {
                 id: contentRect
-                property int focusedButtonIndex: 0
-
                 Keys.onEscapePressed: {
                     GlobalStates.powerPanelOpen = false;
                 }
 
-                Keys.onPressed: (event) => {
-                    if (event.key === Qt.Key_Right) {
-                        if (focusedButtonIndex === 0) focusedButtonIndex = 1;
-                        else if (focusedButtonIndex === 2) focusedButtonIndex = 3;
-                        event.accepted = true;
-                    } else if (event.key === Qt.Key_Left) {
-                        if (focusedButtonIndex === 1) focusedButtonIndex = 0;
-                        else if (focusedButtonIndex === 3) focusedButtonIndex = 2;
-                        event.accepted = true;
-                    } else if (event.key === Qt.Key_Down) {
-                        if (focusedButtonIndex === 0) focusedButtonIndex = 2;
-                        else if (focusedButtonIndex === 1) focusedButtonIndex = 3;
-                        event.accepted = true;
-                    } else if (event.key === Qt.Key_Up) {
-                        if (focusedButtonIndex === 2) focusedButtonIndex = 0;
-                        else if (focusedButtonIndex === 3) focusedButtonIndex = 1;
+                Keys.onPressed: event => {
+                    if (event.key === Qt.Key_Right || event.key === Qt.Key_Left || event.key === Qt.Key_Down || event.key === Qt.Key_Up) {
+                        panel.setKeyActionFocusIndex(event.key);
                         event.accepted = true;
                     } else if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter || event.key === Qt.Key_Space) {
-                        if (focusedButtonIndex === 0) lockButton.clicked();
-                        else if (focusedButtonIndex === 1) logoutButton.clicked();
-                        else if (focusedButtonIndex === 2) rebootButton.clicked();
-                        else if (focusedButtonIndex === 3) shutdownButton.clicked();
+                        panel.toggleButtonOnKeys();
                         event.accepted = true;
                     }
                 }
@@ -114,22 +138,20 @@ Scope {
 
                         PowerActionButton {
                             id: lockButton
+                            index: 0
                             iconName: "lock"
                             label: "Lock"
-                            keyboardFocused: contentRect.focusedButtonIndex === 0
-                            onMouseEntered: contentRect.focusedButtonIndex = 0
                             onClicked: {
                                 GlobalStates.powerPanelOpen = false;
-                                Hyprland.dispatch("exec", "hyprlock");
+                                Hyprland.dispatch("global quickshell:lock");
                             }
                         }
 
                         PowerActionButton {
                             id: logoutButton
+                            index: 1
                             iconName: "logout"
                             label: "Logout"
-                            keyboardFocused: contentRect.focusedButtonIndex === 1
-                            onMouseEntered: contentRect.focusedButtonIndex = 1
                             onClicked: {
                                 Hyprland.dispatch("exit");
                             }
@@ -142,10 +164,9 @@ Scope {
 
                         PowerActionButton {
                             id: rebootButton
+                            index: 2
                             iconName: "restart_alt"
                             label: "Reboot"
-                            keyboardFocused: contentRect.focusedButtonIndex === 2
-                            onMouseEntered: contentRect.focusedButtonIndex = 2
                             onClicked: {
                                 Hyprland.dispatch("exec", "systemctl reboot");
                             }
@@ -153,10 +174,9 @@ Scope {
 
                         PowerActionButton {
                             id: shutdownButton
+                            index: 3
                             iconName: "power_settings_new"
                             label: "Shutdown"
-                            keyboardFocused: contentRect.focusedButtonIndex === 3
-                            onMouseEntered: contentRect.focusedButtonIndex = 3
                             onClicked: {
                                 Hyprland.dispatch("exec", "systemctl poweroff");
                             }
@@ -178,13 +198,14 @@ Scope {
     component PowerActionButton: Rectangle {
         id: buttonRoot
 
+        property int index
+
         required property string iconName
         required property string label
-        required property bool keyboardFocused
         signal clicked
-        signal mouseEntered
 
         property bool hovered: false
+        property bool keyboardFocused: panel.focusedButtonIndex === index
         property bool isActive: hovered || keyboardFocused
 
         function makeTranslucent(color) {
@@ -282,7 +303,7 @@ Scope {
 
             onEntered: {
                 buttonRoot.hovered = true;
-                buttonRoot.mouseEntered();
+                panel.focusedButtonIndex = buttonRoot.index;
             }
 
             onExited: {
