@@ -10,4 +10,7 @@ Singleton {
     property bool screenLockContainsCharacters: false
     property bool sidebarOpen: false
     property bool notificationCenterOpen: false
+    property bool powerPanelOpen: false
+
+    property bool isLaptop: true
 }

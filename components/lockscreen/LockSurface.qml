@@ -2,7 +2,6 @@ import QtQuick
 import Quickshell
 import qs.common
 import qs.services
-import qs.widgets
 import qs.components.lockscreen
 
 MouseArea {

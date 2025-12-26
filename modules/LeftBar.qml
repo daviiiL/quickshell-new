@@ -21,6 +21,8 @@ Scope {
                 scope.instantiated(true);
             }
 
+            visible: !GlobalStates.powerPanelOpen
+
             screen: modelData
             color: Colors.surface_light_translucent
 

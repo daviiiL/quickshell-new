@@ -4,6 +4,7 @@ import Quickshell
 import Quickshell.Wayland
 import qs.common
 import qs.components
+import qs.widgets
 import qs.services
 
 Scope {
@@ -29,7 +30,7 @@ Scope {
                 top: true
             }
 
-            margins.left: 5
+            visible: !GlobalStates.powerPanelOpen
 
             Rectangle {
                 anchors.fill: parent
@@ -120,8 +121,51 @@ Scope {
 
                     SystemStatusCard {
                         Layout.fillHeight: true
-                        Layout.rightMargin: Theme.ui.padding.sm
                         Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                    }
+
+                    Rectangle {
+                        Layout.preferredHeight: icon.implicitHeight + 4
+                        Layout.rightMargin: Theme.ui.padding.sm
+                        Layout.preferredWidth: icon.implicitWidth
+                        color: Qt.rgba(Colors.primary_container.r, Colors.primary_container.g, Colors.primary_container.b, 0)
+                        radius: Theme.ui.radius.md
+                        MaterialSymbol {
+                            id: icon
+                            anchors.fill: parent
+                            fontColor: Colors.secondary
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.verticalCenter: parent.verticalCenter
+                            icon: "settings_power"
+                            iconSize: 15
+                        }
+
+                        Behavior on color {
+                            ColorAnimation {
+                                easing.type: Easing.Bezier
+                                easing.bezierCurve: Theme.anim.curves.standard
+                                duration: 200
+                            }
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            hoverEnabled: true
+
+                            onEntered: {
+                                icon.fontColor = Colors.on_primary_container;
+                                parent.color = Colors.primary_container;
+                            }
+
+                            onExited: {
+                                icon.fontColor = Colors.secondary;
+                                parent.color = Qt.rgba(Colors.primary_container.r, Colors.primary_container.g, Colors.primary_container.b, 0);
+                            }
+
+                            onPressed: {
+                                GlobalStates.powerPanelOpen = true;
+                            }
+                        }
                     }
                 }
             }

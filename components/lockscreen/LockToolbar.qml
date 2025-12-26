@@ -11,7 +11,7 @@ Rectangle {
     implicitWidth: layout.implicitWidth + 20
     implicitHeight: layout.implicitHeight + 20
     color: Colors.current.surface_container
-    radius: Theme.ui.radius.sm
+    radius: Theme.ui.radius.lg
     scale: 0.9
     opacity: 0
     Component.onCompleted: {

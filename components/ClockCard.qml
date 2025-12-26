@@ -24,6 +24,8 @@ RectWidgetCard {
             color: Colors.secondary
             horizontalAlignment: Text.AlignHCenter
             anchors.horizontalCenter: parent.horizontalCenter
+            renderType: Text.QtRendering
+            renderTypeQuality: Text.HighRenderTypeQuality
         }
 
         Text {
@@ -39,6 +41,8 @@ RectWidgetCard {
             horizontalAlignment: Text.AlignHCenter
             anchors.top: hh.bottom
             anchors.horizontalCenter: parent.horizontalCenter
+            renderType: Text.QtRendering
+            renderTypeQuality: Text.HighRenderTypeQuality
         }
 
         Text {
@@ -55,6 +59,8 @@ RectWidgetCard {
                 topMargin: 5
                 horizontalCenter: parent.horizontalCenter
             }
+            renderType: Text.QtRendering
+            renderTypeQuality: Text.HighRenderTypeQuality
         }
     }
 }

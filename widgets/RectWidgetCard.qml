@@ -26,7 +26,7 @@ Rectangle {
             visible: root.showTitle
             Layout.fillWidth: true
             Layout.preferredHeight: 30
-            color: Colors.surface_light_translucent
+            color: Qt.rgba(Colors.secondary_container.r, Colors.secondary_container.g, Colors.secondary_container.b, 0.5)
             topRightRadius: Theme.ui.radius.md
             topLeftRadius: Theme.ui.radius.md
 
@@ -35,9 +35,11 @@ Rectangle {
             Text {
                 anchors.centerIn: parent
                 text: root.title
-                color: Colors.on_surface
+                color: Colors.on_secondary_container
                 font.family: Theme.font.family.inter_thin
                 font.pixelSize: Theme.font.size.md
+                renderType: Text.QtRendering
+                renderTypeQuality: Text.HighRenderTypeQuality
             }
         }
 

@@ -15,7 +15,7 @@ Rectangle {
     implicitHeight: buttonText.implicitHeight + 12
     implicitWidth: 100
     color: root.isActive ? Colors.current.primary_container : Colors.current.secondary_container
-    radius: Theme.ui.radius.sm
+    radius: Theme.ui.radius.lg
     opacity: root.enabled ? 1.0 : 0.5
 
     MouseArea {

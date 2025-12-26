@@ -6,6 +6,7 @@ import Quickshell
 import qs.modules
 
 ShellRoot {
+    PowerPanel {}
     LeftBar {
         id: leftBar
 

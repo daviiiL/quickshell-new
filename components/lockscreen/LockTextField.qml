@@ -4,7 +4,7 @@ import qs.services
 
 Rectangle {
     id: root
-    radius: Theme.ui.radius.sm
+    radius: Theme.ui.radius.lg
 
     property alias text: textInput.text
     property alias placeholderText: placeholder.text

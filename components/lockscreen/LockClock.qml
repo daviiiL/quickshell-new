@@ -38,6 +38,11 @@ Item {
             text: DateTime.time
             color: Colors.current.primary
             antialiasing: true
+
+            renderType: Text.QtRendering
+            renderTypeQuality: Text.HighRenderTypeQuality
+
+            smooth: true
             font {
                 family: Theme.font.family.inter_semi_bold
                 pixelSize: 150

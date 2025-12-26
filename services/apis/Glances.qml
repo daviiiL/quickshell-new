@@ -38,6 +38,7 @@ Singleton {
 
     component RAM: QtObject {
         readonly property real temp: memoryTemp
+        readonly property real utilization: memoryUsePercentage
     }
 
     property real cpuPackageTemp: 0
@@ -49,6 +50,7 @@ Singleton {
     property real gpuUtilization: 0
     property real storageTemp: 0
     property real memoryTemp: 0
+    property real memoryUsePercentage: 0
 
     ApiClient {
         id: glances
@@ -102,6 +104,7 @@ Singleton {
             }
 
             initializationTimer.repeat = false;
+            initializationTimer.stop();
         }, function (status, error) {
             console.warn("Glances Server Error:", status, error);
             isServerRunning = false;
@@ -154,6 +157,7 @@ Singleton {
             cpuTotal = data.cpu;
             cpuCurrentFrequency = data.cpu_hz_current ?? 0;
             cpuMaxFrequency = data.cpu_hz ?? 0;
+            memoryUsePercentage = data.mem;
         }, logError);
     }
 

@@ -3,12 +3,19 @@ pragma Singleton
 import QtQuick
 import Quickshell
 import Quickshell.Services.UPower
+import qs.common
 
 Singleton {
     id: root
 
+    Component.onCompleted: {
+        GlobalStates.isLaptop = isLaptopBattery;
+        console.info(`System is ${GlobalStates.isLaptop ? "laptop" : "desktop"}`);
+    }
+
     readonly property bool onBattery: UPower.onBattery
     readonly property bool isLaptopBattery: UPower.displayDevice.isLaptopBattery || false
+
     readonly property real percentage: UPower.displayDevice.percentage
     readonly property int state: UPower.displayDevice.state
     readonly property bool isCharging: state === UPowerDeviceState.Charging

@@ -131,8 +131,7 @@ Item {
 
         x: indicatorPosition
         width: indicatorLength
-        height: Theme.ui.topBarHeight - root.indicatorPadding * 5
-
+        height: Theme.ui.topBarHeight - root.indicatorPadding * 2
         Behavior on idx1 {
             NumberAnimation {
                 duration: 100
@@ -177,7 +176,8 @@ Item {
                     Text {
                         text: button.workspaceValue
                         anchors.centerIn: parent
-
+                        renderType: Text.QtRendering
+                        renderTypeQuality: Text.HighRenderTypeQuality
                         property real animatedPixelSize: (monitor?.activeWorkspace?.id == button.workspaceValue) ? Theme.font.size.lg : Theme.font.size.md
                         property int animatedWeight: (monitor?.activeWorkspace?.id == button.workspaceValue) ? Font.Bold : Font.Medium
 

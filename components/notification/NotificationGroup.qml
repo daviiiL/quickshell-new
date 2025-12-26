@@ -191,7 +191,7 @@ MouseArea {
                     id: topRow
                     Layout.fillWidth: true
                     Layout.preferredHeight: implicitHeight
-                    property real fontSize: Theme.font.size.md + 3
+                    property real fontSize: Theme.font.size.md
                     property bool showAppName: root.multipleNotifications
                     implicitHeight: Math.max(topTextRow.implicitHeight, expandButton.implicitHeight)
 
@@ -207,7 +207,7 @@ MouseArea {
                             elide: Text.ElideRight
                             Layout.fillWidth: true
                             text: (topRow.showAppName ? root.notificationGroup?.appName : root.notificationGroup?.notifications[0]?.summary) || ""
-                            font.pixelSize: topRow.showAppName ? topRow.fontSize : Theme.font.size.md + 3
+                            font.pixelSize: topRow.showAppName ? topRow.fontSize : Theme.font.size.md
                             color: Colors.on_primary_container
                         }
 
@@ -218,6 +218,7 @@ MouseArea {
                             text: NotificationUtils.getFriendlyNotifTimeString(root.notificationGroup?.time)
                             font.pixelSize: topRow.fontSize
                             color: Colors.on_primary_container
+
                             opacity: 0.7
                         }
                     }
