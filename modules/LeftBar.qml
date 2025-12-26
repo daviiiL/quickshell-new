@@ -8,12 +8,18 @@ import qs.common
 import qs.components
 
 Scope {
+    id: scope
+    signal instantiated(leftBarInstantiated: bool)
     Variants {
         model: Quickshell.screens
 
         PanelWindow {
             id: root
             required property var modelData
+
+            Component.onCompleted: {
+                scope.instantiated(true);
+            }
 
             screen: modelData
             color: Colors.surface_light_translucent

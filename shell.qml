@@ -6,8 +6,17 @@ import Quickshell
 import qs.modules
 
 ShellRoot {
-    LeftBar {}
-    TopBar {}
+    LeftBar {
+        id: leftBar
+
+        onInstantiated: () => {
+            topBarLoader.loading = true;
+        }
+    }
+    LazyLoader {
+        id: topBarLoader
+        TopBar {}
+    }
     Lockscreen {}
     NotificationPopup {}
     NotificationCenterPanel {}

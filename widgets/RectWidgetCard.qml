@@ -11,7 +11,7 @@ Rectangle {
 
     property bool showTitle: false
     property string title: ""
-    property color contentBackground
+    property color contentBackground: Colors.background
 
     default property alias content: contentRect.data
 

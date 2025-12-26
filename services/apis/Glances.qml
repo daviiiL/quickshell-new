@@ -79,8 +79,9 @@ Singleton {
     }
 
     Timer {
+        id: initializationTimer
         interval: 2000
-        repeat: false
+        repeat: true
         running: true
         onTriggered: initialize()
     }
@@ -99,6 +100,8 @@ Singleton {
             } else {
                 laptopModeNotification.running = true;
             }
+
+            initializationTimer.repeat = false;
         }, function (status, error) {
             console.warn("Glances Server Error:", status, error);
             isServerRunning = false;
